@@ -25,13 +25,15 @@ body.switch {
 
 header {
     margin: 0 auto 2em auto;
+    text-align: center;
+
 }
 
 #banner {
     position: relative;
     display: flex;
-    width: 1100px;
-    height: 250px;
+    width: 825px;
+    height: 341px;
     margin: auto;
     background-color: rgb(235, 235, 235);
     color: #333;
@@ -97,25 +99,45 @@ section.switch a:hover {
 
 button {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 12px;
-    background-color: orange;
-    color: #333;
-    border: 1px solid transparent;
+    top: 10px;
+    right: 10px;
+    padding: 5px 3px;
+    border: none;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+
 }
 
 button:hover {
-    background-color: coral;
+    background-color: white;
+    transform: scale(1.1);
     cursor: pointer;
 }
 
 button.switch {
-    background-color: rgb(235, 235, 235);
+    background-color: white;
     border-color: #333;
 }
 
 button.switch:hover {
-    background-color: #333;
-    color: rgb(235, 235, 235)
 }
+#banner img{
+    width: 100%;
+    height: auto;
+}
+
+
+#sidebar {
+    position: fixed;
+    top: 0px;
+    left: -150px;
+    width: 200px;
+    height: 50px;
+  }
+  
+  #sidebar img {
+    height: 300px;
+  }
+  
