@@ -1,0 +1,70 @@
+[
+    {
+    "Time": "2023-04-22T12:00:00",
+    "Mood": 7,
+    "Music": "Daft Punk - One More Time",
+    "Water": true,
+    "Smile": false
+    },
+    {
+    "Time": "2023-04-22T12:15:00",
+    "Mood": 8,
+    "Music": "The Beatles - Let It Be",
+    "Water": true,
+    "Smile": true
+    },
+    {
+    "Time": "2023-04-22T12:30:00",
+    "Mood": 6,
+    "Music": "Kendrick Lamar - DNA.",
+    "Water": false,
+    "Smile": false
+    },
+    {
+    "Time": "2023-04-22T12:45:00",
+    "Mood": 9,
+    "Music": "Beyoncé - Love on Top",
+    "Water": true,
+    "Smile": true
+    },
+    {
+    "Time": "2023-04-22T13:00:00",
+    "Mood": 7,
+    "Music": "The Weeknd - Blinding Lights",
+    "Water": true,
+    "Smile": true
+    },
+    {
+    "Time": "2023-04-22T13:00:15",
+    "Mood": 8,
+    "Music": "Kanye West - Homecoming",
+    "Water": true,
+    "Smile": true
+    },
+    {
+    "Time": "2023-04-22T13:00:30",
+    "Mood": 9,
+    "Music": "The Weeknd - Secrets",
+    "Water": true,
+    "Smile": true
+    },
+    {
+    "Time": "2023-04-22T13:00:45",
+    "Mood": 4,
+    "Music": "Katy Perry - Teenage Dream",
+    "Water": false,
+    "Smile": false
+    },
+    {
+    "Time": "2023-04-22T14:00:00",
+    "Mood": 5,
+    "Music": "Frank Ocean - Nights",
+    "Water": false,
+    "Smile": false
+    }
+]
+    
+    
+    
+    
+    
