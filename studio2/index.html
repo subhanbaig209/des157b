@@ -1,89 +1,124 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Data Table</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <title>Music Graph</title>
+    <style>
+      /* CSS styles for the chart */
+      .chart {
+        width: 800px;
+        height: 400px;
+        margin: auto;
+      }
+      
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: black;
+        shape-rendering: crispEdges;
+      }
+      
+      .dot {
+        fill: blue;
+      }
+      
+      .dot:hover {
+        fill: red;
+      }
+    </style>
   </head>
   <body>
-    <table>
-      <thead>
-        <tr>
-          <th>Time</th>
-          <th>Mood</th>
-          <th>Music</th>
-          <th>Water</th>
-          <th>Smile</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2023-04-22T12:00:00</td>
-          <td>7</td>
-          <td>Daft Punk - One More Time</td>
-          <td>true</td>
-          <td>false</td>
-        </tr>
-        <tr>
-          <td>2023-04-22T12:15:00</td>
-          <td>8</td>
-          <td>The Beatles - Let It Be</td>
-          <td>true</td>
-          <td>true</td>
-        </tr>
-        <tr>
-          <td>2023-04-22T12:30:00</td>
-          <td>6</td>
-          <td>Kendrick Lamar - DNA.</td>
-          <td>false</td>
-          <td>false</td>
-        </tr>
-        <tr>
-          <td>2023-04-22T12:45:00</td>
-          <td>9</td>
-          <td>Beyoncé - Love on Top</td>
-          <td>true</td>
-          <td>true</td>
-        </tr>
-        <tr>
-          <td>2023-04-22T13:00:00</td>
-          <td>7</td>
-          <td>The Weeknd - Blinding Lights</td>
-          <td>true</td>
-          <td>true</td>
-        </tr>
-        <tr>
-          <td>2023-04-22T13:00:15</td>
-          <td>8</td>
-          <td>Kanye West - Homecoming</td>
-          <td>true</td>
-          <td>true</td>
-        </tr>
-        <tr>
-          <td>2023-04-22T13:00:30</td>
-          <td>9</td>
-          <td>The Weeknd - Secrets</td>
-          <td>true</td>
-          <td>true</td>
-        </tr>
-        <tr>
-          <td>2023-04-22T13:00:45</td>
-          <td>4</td>
-          <td>Katy Perry - Teenage Dream</td>
-          <td>false</td>
-          <td>false</td>
-        </tr>
-        <tr>
-          <td>2023-04-22T14:00:00</td>
-          <td>5</td>
-          <td>Frank Ocean - Nights</td>
-          <td>false</td>
-          <td>false</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="chart"></div>
+    
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+      // JavaScript code for the chart
+      
+      // Define the data
+      const data = [
+        {
+          "Time": "2023-04-22T12:00:00",
+          "Music": "Daft Punk - One More Time",
+        },
+        {
+          "Time": "2023-04-22T12:15:00",
+          "Music": "The Beatles - Let It Be",
+        },
+        {
+          "Time": "2023-04-22T12:30:00",
+          "Music": "Kendrick Lamar - DNA.",
+        },
+        {
+          "Time": "2023-04-22T12:45:00",
+          "Music": "Beyoncé - Love on Top",
+        },
+        {
+          "Time": "2023-04-22T13:00:00",
+          "Music": "The Weeknd - Blinding Lights",
+        },
+        {
+          "Time": "2023-04-22T13:00:15",
+          "Music": "Kanye West - Homecoming",
+        },
+        {
+          "Time": "2023-04-22T13:00:30",
+          "Music": "The Weeknd - Secrets",
+        },
+        {
+          "Time": "2023-04-22T13:00:45",
+          "Music": "Katy Perry - Teenage Dream",
+        },
+        {
+          "Time": "2023-04-22T14:00:00",
+          "Music": "Frank Ocean - Nights",
+        }
+      ];
+      
+      // Define the margins, width, and height of the chart
+      const margin = { top: 20, right: 20, bottom: 30, left: 50 };
+      const width = 800 - margin.left - margin.right;
+      const height = 400 - margin.top - margin.bottom;
+      
+      // Define the x and y scales
+      const x = d3.scaleTime()
+        .domain(d3.extent(data, d => new Date(d.Time)))
+        .range([0, width]);
+      
+      const y = d3.scalePoint()
+        .domain(data.map(d => d.Music))
+        .range([height, 0]);
+      
+      // Define the x and y axes
+      const xAxis = d3.axisBottom(x);
+      const yAxis = d3.axisLeft(y);
+      
+      // Create the SVG element and set its dimensions
+      const svg = d3.select(".chart")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+      
+      // Add the x-axis to the chart
+      svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", `translate(0,${height})`)
+        .call(xAxis);
+      
+      // Add the y-axis to the chart
+      svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+      
+      // Add the dots to the chart
+      svg.selectAll(".dot")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "dot")
+        .attr("cx", d => x(new Date(d.Time)))
+        .attr("cy", d => y(d.Music))
+        .attr("r", 5);
+    </script>
   </body>
 </html>
-
-
-
