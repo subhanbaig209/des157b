@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subhan Baig - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+<body>
+  <header class="bg-gray-800 py-4">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <h1 class="text-white text-2xl">Subhan Baig</h1>
+      <nav>
+        <ul class="flex space-x-4 text-white">
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto mt-4 px-4">
+    <section id="about" class="my-8">
+      <h2 class="text-2xl font-semibold mb-4">About Me</h2>
+      <p class="mb-4">Hi, my name is Subhan Baig. I am a web developer with experience in HTML, CSS, JavaScript, and React. I am passionate about creating beautiful and functional websites that provide a great user experience. </p>
+      <p>When I am not coding, I love to watch sports, play video games, and hang out with friends.</p>
+    </section>
+
+    <section id="skills" class="my-8">
+      <h2 class="text-2xl font-semibold mb-4">Skills</h2>
+      <ul class="list-disc pl-4">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>React</li>
+        <li>Tailwind CSS</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="my-8">
+      <h2 class="text-2xl font-semibold mb-4">Projects</h2>
+      <ul id="project-list" class="list-disc pl-4"></ul>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+  <script>
+    axios.get('https://api.github.com/users/subhanbaig209/repos')
+      .then(response => {
+        const projects = response.data.map(project => `
+          <li><a href="${project.html_url}" target="_blank">${project.name}</a></li>
+        `);
+        document.getElementById('project-list').innerHTML = projects.join('');
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    const navLinks = document.querySelectorAll('nav a');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    link.classList.toggle('active');
+
+    navLinks.forEach(otherLink => {
+      if (otherLink !== link) {
+        otherLink.classList.remove('active');
+      }
+    });
+  });
+})
+
+  </script>
+  <footer> Axios: https://unpkg.com/axios/dist/axios.min.js </footer>
+  <footer> Tailwind CSS: https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css </footer>
+</body>
+
+</html>
