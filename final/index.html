@@ -10,6 +10,10 @@
             height: 100vh;
         }
 
+        body {
+            background-color: lightblue;
+        }
+
         .header {
             text-align: center;
             padding: 20px;
@@ -48,12 +52,12 @@
 
         .hint {
             position: fixed;
-            left: 50px;
-            top: 50%;
+           
             transform: translateY(-50%);
-            text-align: left;
             margin-top: 20px;
             font-style: italic;
+            word-wrap: break-word;
+            word-break: break-all;
         }
     </style>
 </head>
@@ -66,16 +70,16 @@
         <p>Instructions: Click on any part of the seal and answer the question about the given UC Davis Landmark. Once you answer 10 questions, you will have unlocked the Davis seal!</p>
     </div>
 
+    <div class="hints-section">
+        <div class="hint" id="hint"></div>
+    </div>
+
     <div class="score">
         Score: <span id="score">0</span>
     </div>
 
     <div class="center-image">
         <img src="images/seal-PhotoRoom.png-PhotoRoom.png" width="700" height="555" alt="My Image" onclick="askQuestion()">
-    </div>
-
-    <div class="hints-section">
-        <div class="hint" id="hint"></div>
     </div>
 
     <script>
