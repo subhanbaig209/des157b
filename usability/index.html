@@ -90,7 +90,12 @@
                 <li>Try to answer at least 5 questions correctly.</li>
                 <li>Provide feedback on the overall usability and engagement of the scavenger hunt.</li>
             </ol>
-            <p>We appreciate your time and input!</p>
+            <p>We appreciate your time and input! Please answer these questions after</p>
+            <ol>
+              <li> How easy was it for you to navigate through the UC Davis Seal Scavenger Hunt website?</li>
+              <li> Were the questions and hints provided sufficient in guiding you to answer correctly? If not, what improvements would you suggest?</li>
+              <li> Do you have any suggestions or ideas to enhance the user experience of the UC Davis Seal Scavenger Hunt website? </li>
+          </ol>
             <button onclick="closeOverlay()">Start</button>
         </div>
     </div>
@@ -167,7 +172,6 @@ if (userAnswer !== null) {
       currentQuestionIndex++;
     } else {
       alert("Congratulations! You have answered all the questions.");
-      // You can add additional logic here, like displaying a message or unlocking the Davis seal
     }
   }
 }
@@ -183,7 +187,6 @@ imageElement.addEventListener("click", askQuestion);
 scoreElement.textContent = score;
 hintElement.textContent = "";
 
-// Additional initialization logic can be added here
 });
 
 function closeOverlay() {
@@ -195,4 +198,3 @@ overlay.style.display = "none";
 
 </body>
 </html>
-  
