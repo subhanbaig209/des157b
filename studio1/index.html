@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio 1</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="loader">Loading...</div>
+
+  <div id="video-container">
+    <canvas id="canvas"></canvas>
+    <video id="my-video" autoplay muted>
+      <source src="media/media.mp4" type="video/webm">
+      <source src="media/media.mp4" type="video/mp4">
+      <p>
+        Your browser doesn't support HTML5 video.
+        <a href="media/media.mp4">Download the video</a> instead.
+      </p>
+    </video>
+    <div id="text-container">
+      <p id="text"></p>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', function() {
+      var loader = document.getElementById('loader');
+      loader.style.display = 'none';
+    });
+
+    var myVideo = document.getElementById('my-video');
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var text = "It doesn't matter if you fall down, it's whether you get back up.";
+
+    canvas.width = myVideo.offsetWidth;
+    canvas.height = myVideo.offsetHeight;
+
+    myVideo.addEventListener('play', function() {
+      var videoInterval = setInterval(function() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.font = "24px Arial";
+        ctx.fillStyle = "#ffffff";
+        var x = Math.random() * (canvas.width - ctx.measureText(text).width);
+        var y = Math.random() * (canvas.height - 24);
+        ctx.fillText(text, x, y);
+      }, 1000);
+
+      myVideo.addEventListener('pause', function() {
+        clearInterval(videoInterval);
+      });
+
+      myVideo.addEventListener('ended', function() {
+        clearInterval(videoInterval);
+      });
+    });
+
+    myVideo.addEventListener('mouseover', function() {
+      myVideo.play();
+      document.getElementById('text-container').style.display = 'block';
+    });
+
+    myVideo.addEventListener('mouseout', function() {
+      myVideo.pause();
+      document.getElementById('text-container').style.display = 'none';
+    });
+
+    document.getElementById('text').textContent = text;
+  </script>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #loader {
+      font-size: 24px;
+      text-align: center;
+    }
+
+    #video-container {
+      position: relative;
+    }
+
+    #text-container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+    }
+
+    #text {
+      color: white;
+      font-size: 18px;
+      margin: 0;
+    }
+  </style>
+</body>
+</html>
