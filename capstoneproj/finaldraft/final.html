@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DES157B Capstone Project</title>
+    <link href="final.css" rel="stylesheet" />
+    <script src="final.js" defer></script>
+
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to UC Davis Seal Scavenger Hunt</h1>
+    </div>
+
+    <div class="instructions">
+        <p>Instructions: Click on any part of the seal and answer the question about the given UC Davis Landmark. Once you answer all 5 questions, you will have unlocked the Davis seal!</p>
+        <p>You must go to the Centennial Seal Location in order to answer the first question.</p>
+    </div>
+
+    <div class="hints-section">
+        <div class="hint" id="hint"></div>
+    </div>
+
+    <div class="score">
+        Score: <span id="score">0</span>
+    </div>
+    <!--
+    <div class="center-image">
+        <img src="images/circle.png" width="687" height="685" alt="myImage" onclick="showQuestionDialog()">
+    </div>
+-->
+<div class="center-image">
+    <img src="images/circle.png" alt="Center Image">
+  </div>
+  
+  <div id="questionModal" class="modal">
+    <div class="modal-content">
+      <h2>Question</h2>
+      <p id="questionText"></p>
+      <input type="text" id="answerInput" placeholder="Enter your answer">
+      <button id="submitAnswerButton">Submit</button>
+    </div>
+  </div>
+  
+  <div id="locationModal" class="modal">
+    <div class="modal-content">
+      <h2>Location Error</h2>
+      <p>You are not within the designated location.</p>
+      <button id="closeLocationModalButton">Close</button>
+    </div>
+  </div>
+  
+
+</body>
+</html>
